@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengumuman Kelulusan - SMK PIUS X MAGELANG</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* === VARIABEL WARNA & FONT === */
+      :root {
+        --navy: #0a192f;
+        --gold: #d4af37;
+        --white: #ffffff;
+        --gray-light: #f4f7f6;
+        --gray-dark: #333333;
+        --success: #28a745;
+        --danger: #dc3545;
+        --success-bg: #d4edda;
+        --danger-bg: #f8d7da;
+      }
+
+      /* === GLOBAL RESET & TYPOGRAPHY === */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: var(--gray-light);
+        color: var(--gray-dark);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* === SINGLE PAGE APPLICATION UTILITIES === */
+      .page-section {
+        display: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+        flex: 1;
+      }
+
+      .page-section.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        animation: slideUpFade 0.6s ease forwards;
+      }
+
+      @keyframes slideUpFade {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* === LAYOUTING & COMPONENTS === */
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      .card {
+        background: var(--white);
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        border-top: 5px solid var(--gold);
+      }
+
+      /* === HEADER === */
+      .header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .school-logo {
+        width: 100px;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+
+      .header-title {
+        color: var(--navy);
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .header-subtitle {
+        color: var(--gold);
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+
+      .svg-illustration {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1rem auto;
+        fill: var(--gold);
+      }
+
+      /* === GRID INFORMASI & JURUSAN === */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .info-box {
+        background: var(--gray-light);
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #e0e0e0;
+      }
+
+      .info-box h3 {
+        color: var(--navy);
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .info-box p {
+        font-size: 0.95rem;
+      }
+
+      /* === STATISTIK === */
+      .stats-container {
+        display: flex;
+        justify-content: space-around;
+        background: var(--navy);
+        color: var(--white);
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .stat-item h4 {
+        color: var(--gold);
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+      }
+
+      /* === COUNTDOWN TIMER === */
+      .countdown-wrapper {
+        text-align: center;
+        margin: 2rem 0;
+      }
+
+      .countdown-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .time-box {
+        background: var(--navy);
+        color: var(--gold);
+        width: 70px;
+        height: 75px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(10, 25, 47, 0.2);
+      }
+
+      .time-box span {
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .time-box small {
+        color: var(--white);
+        font-size: 0.7rem;
+        margin-top: 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* === BUTTONS === */
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        width: 100%;
+        text-decoration: none; /* Untuk tag <a> */
+        line-height: 1.5;
+      }
+
+      .btn-primary {
+        background-color: var(--navy);
+        color: var(--white);
+      }
+
+      .btn-primary:hover:not(:disabled) {
+        background-color: #061020;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(10, 25, 47, 0.3);
+        color: var(--white);
+      }
+
+      .btn-gold {
+        background-color: var(--gold);
+        color: var(--navy);
+      }
+
+      .btn-gold:hover {
+        background-color: #b8972e;
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--navy);
+        color: var(--navy);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--navy);
+        color: var(--white);
+      }
+
+      .btn:disabled {
+        background-color: #cccccc;
+        color: #666666;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      /* === SAMBUTAN PAGE === */
+      .sambutan-text {
+        text-align: justify;
+        margin-bottom: 2rem;
+        font-size: 1rem;
+      }
+
+      .signature-area {
+        text-align: right;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .signature-img {
+        width: 150px;
+        height: auto;
+        margin-bottom: 0.5rem;
+        opacity: 0.8;
+      }
+
+      .headmaster-name {
+        font-weight: 700;
+        color: var(--navy);
+        text-decoration: underline;
+      }
+
+      /* === CEK KELULUSAN PAGE === */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--navy);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--gold);
+      }
+
+      /* === MODAL & ANIMASI POPUP === */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(10, 25, 47, 0.85);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+        animation: fadeInOverlay 0.3s ease forwards;
+      }
+
+      @keyframes fadeInOverlay {
+        from {
+          opacity: 0;
+          backdrop-filter: blur(0px);
+        }
+        to {
+          opacity: 1;
+          backdrop-filter: blur(5px);
+        }
+      }
+
+      @keyframes popUp {
+        0% {
+          transform: scale(0.7) translateY(30px);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* === HASIL KELULUSAN === */
+      .result-box {
+        padding: 2.5rem;
+        border-radius: 12px;
+        text-align: center;
+        width: 100%;
+        max-width: 600px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .modal-overlay.active .result-box {
+        animation: popUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      .result-box.lulus {
+        background-color: var(--success-bg);
+        border: 2px solid var(--success);
+      }
+
+      .result-box.tidak-lulus {
+        background-color: var(--danger-bg);
+        border: 2px solid var(--danger);
+      }
+
+      .result-box.error {
+        background-color: #fff3cd;
+        border: 2px solid #ffecb5;
+        color: #856404;
+      }
+
+      .result-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 0.5rem;
+      }
+
+      .result-status {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 1rem 0;
+        padding: 0.5rem 1rem;
+        display: inline-block;
+        border-radius: 4px;
+      }
+
+      .lulus .result-status {
+        color: var(--white);
+        background-color: var(--success);
+      }
+      .tidak-lulus .result-status {
+        color: var(--white);
+        background-color: var(--danger);
+      }
+
+      /* === FOOTER === */
+      footer {
+        text-align: center;
+        padding: 1.5rem;
+        background: var(--navy);
+        color: var(--white);
+        margin-top: auto;
+        font-size: 0.9rem;
+      }
+
+      /* === RESPONSIVE === */
+      @media (max-width: 768px) {
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+        .stats-container {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .btn-group {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================= HALAMAN 1: BERANDA ================= -->
+    <main id="page-home" class="page-section active container">
+      <div class="card">
+        <div class="header">
+          <img
+            src="https://tarakanita5.afresto.id/smk-mgl/images/logo/smk-mgl/smk-mgl.png"
+            alt="Logo Sekolah"
+            class="school-logo"
+          />
+          <h1 class="header-title">Pengumuman Kelulusan</h1>
+          <h2 class="header-subtitle">SMK PIUS X MAGELANG</h2>
+          <p>Tahun Ajaran 2025/2026</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="info-box">
+            <h3>🏢 Tentang Sekolah</h3>
+            <p>
+              SMK PIUS X MAGELANG<br />Akreditasi: A<br />Cerdas Berintegritas
+            </p>
+          </div>
+          <div class="info-box">
+            <h3>📞 Kontak & Info</h3>
+            <p>
+              Web: https://smk-mgl.tarakanita.sch.id/<br />Whatsapp:
+              0811-264-8161
+            </p>
+          </div>
+        </div>
+
+        <h3 style="text-align: center; color: var(--navy); margin-bottom: 1rem">
+          Program Keahlian
+        </h3>
+        <div class="grid-2">
+          <div class="info-box" style="border-left: 4px solid var(--gold)">
+            <h3>👨‍🍳 Kuliner</h3>
+            <p>
+              Mencetak profesional di bidang tata boga, dan industri makanan.
+            </p>
+          </div>
+          <div class="info-box" style="border-left: 4px solid var(--gold)">
+            <h3>👗 Desain Produksi Busana</h3>
+            <p>
+              Mencetak desainer pakaian profesional dengan keterampilan tata
+              busana modern.
+            </p>
+          </div>
+        </div>
+
+        <div class="stats-container">
+          <div class="stat-item">
+            <h4 id="stat-date">04 Mei 2026</h4>
+            <p>Tanggal Pengumuman Kelulusan</p>
+          </div>
+        </div>
+
+        <div
+          class="info-box"
+          style="
+            margin-bottom: 2rem;
+            background-color: #e8f4fd;
+            border-color: #b8daff;
+          "
+        >
+          <h3 style="color: #0056b3">📋 Informasi Penting</h3>
+          <p style="text-align: left; font-size: 0.9rem">
+            1. Pengumuman kelulusan bersifat resmi dan mutlak.<br />
+            2. Siswa yang dinyatakan <strong>LULUS</strong> dapat mengambil
+            Surat Keterangan Lulus (SKL) resmi mulai tanggal 8 Mei 2026 di
+            Kantor Tata Usaha.<br />
+            3. Dilarang melakukan konvoi, coret-coret seragam, atau perayaan
+            berlebihan yang mengganggu ketertiban umum.
+          </p>
+        </div>
+
+        <div class="countdown-wrapper" id="timer-section">
+          <h3 style="color: var(--navy)">Waktu Menuju Pengumuman:</h3>
+          <div class="countdown-container">
+            <div class="time-box">
+              <span id="cd-days">00</span><small>Hari</small>
+            </div>
+            <div class="time-box">
+              <span id="cd-hours">00</span><small>Jam</small>
+            </div>
+            <div class="time-box">
+              <span id="cd-mins">00</span><small>Menit</small>
+            </div>
+            <div class="time-box">
+              <span id="cd-secs">00</span><small>Detik</small>
+            </div>
+          </div>
+        </div>
+
+        <button id="btn-enter" class="btn btn-primary btn-masuk" disabled>
+          PENGUMUMAN BELUM DIBUKA
+        </button>
+      </div>
+    </main>
+
+    <!-- ================= HALAMAN 2: SAMBUTAN ================= -->
+    <main id="page-sambutan" class="page-section container">
+      <div class="card">
+        <div class="header">
+          <h1 class="header-title">Sambutan Kepala Sekolah</h1>
+          <div
+            style="
+              width: 50px;
+              height: 3px;
+              background: var(--gold);
+              margin: 10px auto;
+            "
+          ></div>
+        </div>
+
+        <div class="sambutan-text">
+          <p>
+            Puji syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa atas
+            segala rahmat dan karunia-Nya, sehingga kita dapat melaksanakan
+            seluruh rangkaian proses pembelajaran dan evaluasi Tahun Ajaran
+            2025/2026 di SMK PIUS X MAGELANG dengan baik.
+          </p>
+          <br />
+          <p>
+            Anak-anakku sekalian yang saya cintai dan banggakan. Hari ini adalah
+            momen yang sangat bersejarah dan mendebarkan bagi kalian. Pengumuman
+            kelulusan ini adalah buah dari kerja keras, disiplin, dan doa yang
+            kalian panjatkan selama tiga tahun menimba ilmu di sekolah tercinta
+            ini.
+          </p>
+          <br />
+          <p>
+            Bagi yang dinyatakan LULUS, saya ucapkan
+            <strong>Selamat!</strong> Jadikan ini sebagai langkah awal untuk
+            meraih cita-cita yang lebih tinggi, baik itu melanjutkan pendidikan
+            maupun terjun ke dunia kerja. Bagi yang belum berhasil, jangan
+            berkecil hati. Kegagalan bukanlah akhir segalanya, melainkan sukses
+            yang tertunda. Teruslah berjuang.
+          </p>
+        </div>
+
+        <div class="signature-area">
+          <p>Magelang, 04 Mei 2026<br />Kepala Sekolah,</p>
+          <!-- Placeholder Tanda Tangan SVG -->
+          <svg class="signature-img" viewBox="0 0 200 60" xmlns="">
+            <path
+              d="M10,40 Q30,10 50,40 T90,20 T130,50 T180,20"
+              fill="none"
+              stroke="var(--navy)"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <path
+              d="M40,30 Q60,50 80,20"
+              fill="none"
+              stroke="var(--navy)"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <p class="headmaster-name">Naning Yulianti Antonia, M.Pd</p>
+          <p>NIP. -</p>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-outline" onclick="showPage('page-home')">
+            Kembali ke Beranda
+          </button>
+          <button class="btn btn-primary" onclick="showPage('page-cek')">
+            Lanjut Cek Kelulusan
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================= HALAMAN 3: CEK KELULUSAN ================= -->
+    <main id="page-cek" class="page-section container">
+      <div class="card" id="print-area">
+        <div class="header">
+          <h1 class="header-title">Cek Status Kelulusan</h1>
+          <p>Masukkan Nomor Token yang sudah dibagikan kepada Anda</p>
+        </div>
+
+        <!-- Form Input -->
+        <div id="form-container">
+          <div class="form-group">
+            <label for="nisn-input">Token</label>
+            <input
+              type="text"
+              id="nisn-input"
+              class="form-control"
+              placeholder="Contoh: 0051234567"
+              autocomplete="off"
+            />
+          </div>
+          <button class="btn btn-gold" id="btn-cek">CEK KELULUSAN</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================= MODAL POPUP HASIL KELULUSAN ================= -->
+    <div id="result-modal" class="modal-overlay">
+      <div id="result-container" class="result-box">
+        <!-- Hasil akan dirender di sini via JavaScript -->
+      </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <p>
+        &copy; <span id="currentYear"></span> SMK PIUS X MAGELANG. All Rights
+        Reserved.
+      </p>
+    </footer>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+      /* =========================================
+           1. DATABASE CSV MOCKUP (Bisa Copy-Paste Excel)
+           Tambahkan Link Google Drive di kolom LinkSKL
+           ========================================= */
+      const dataCSV = `Nama,NISN,Jurusan,Status,LinkSKL
+AGATHA WURYADI CAHYARANI,0081326349,Kuliner,LULUS,https://drive.google.com/file/d/1DzEhvvaKw24vga11LV2cnHEMzTYkkcT1/view?usp=drive_link
+ALDI SETIAWAN,0053322668,Kuliner,LULUS,https://drive.google.com/file/d/1k6p-3N3s71gkGSZVxpMviLAqL_rbt6gm/view?usp=drive_link
+ALEXANDREA IKNASIA PIPIT EDWITA,0074876483,Kuliner,LULUS,https://drive.google.com/file/d/14y5KCicawevYjGK0fooi56gWdeLiPgRj/view?usp=drive_link
+BENEDIKTA CHELSY HERDITYA,0081939476,Kuliner,LULUS,https://drive.google.com/file/d/1fxyvbx5Pld9f1z4UMFe4PjpN5RaRpog_/view?usp=drive_link
+CHAROLLUS BORROMEUS ANTHONY NUNANG,0089756348,Kuliner,LULUS,https://drive.google.com/file/d/1dBl2WiJYOVHpRPLLK1Xrzo0OSRCnDsh9/view?usp=drive_link
+CHESA NATHANIA PUTRI,0072423322,Kuliner,LULUS,https://drive.google.com/file/d/1lr_6SukszkKDWgtBNkLg_W_EF1-MRZoY/view?usp=drive_link
+DEWI MARSYA MAHARANI,0073324540,Kuliner,LULUS,https://drive.google.com/file/d/1E8gKarJiPTK_YwApuzp-TT3exHKD6MqM/view?usp=drive_link
+ELEUTHERIUS ROSSI PRASETYO,0073349473,Kuliner,LULUS,https://drive.google.com/file/d/1IZiHG5bgTnrpQkzmBABNgfAHELmLIftG/view?usp=drive_link
+ELISABETH KANAKA DAHAYU PUTRI,0075838888,Kuliner,LULUS,https://drive.google.com/file/d/1bgEwZAyE47ZcIfF-XjT-MoA98RXCy3g4/view?usp=drive_link
+EMMANUEL LINGSAR DAYANA,0089506262,Kuliner,LULUS,https://drive.google.com/file/d/1vC26tvjIsuHNCApna9mxR_VYOfcmFY1b/view?usp=drive_link
+FABIANUS ANGGIH ARDOYO,0072502825,Kuliner,LULUS,https://drive.google.com/file/d/1Ei8O-kVcACs09cs3Rd9vzWZxSSSKAa7h/view?usp=drive_link
+FLORENTINA NATHANIA ELFRIDA HARRY PATRICIA,0072043066,Kuliner,LULUS,https://drive.google.com/file/d/1uIwBiU-_QKw2KyPeiajoyYhWjYir4Nli/view?usp=drive_link
+FRICILIA DWI MARSELA,0073372106,Kuliner,LULUS,https://drive.google.com/file/d/1BZpjJqjIleaEYvcRQtKIiOq1ltYHkkf3/view?usp=drive_link
+IRINE IRRIS,0073012238,Kuliner,LULUS,https://drive.google.com/file/d/1m92w8V8IdpAUtXEqqPO8-tTA-eeP0kl7/view?usp=drive_link
+ISABEL JUNIKA PERWITASARI,0082016950,Kuliner,LULUS,https://drive.google.com/file/d/1Fges1CVf7IC8bdXIm4cggz04rPDFiUzS/view?usp=drive_link
+KIRANA DESTA NATALLY,0074758503,Kuliner,LULUS,https://drive.google.com/file/d/1LIR5T0CbkyQ-1HMyGIJPSQ3L0yS9hV2G/view?usp=drive_link
+LAURENTINA KRISTRIANTARI,0085349004,Kuliner,LULUS,https://drive.google.com/file/d/1B4zHloCTgtjQ2tzMyCWIgE0ISu4aEVbS/view?usp=drive_link
+LEOCADIA DANINGTYAS DESI PURWITASARI,0072409907,Kuliner,LULUS,https://drive.google.com/file/d/1QPdpz0K7XTlK3cuu0fZXCO1LlK1WmxEy/view?usp=drive_link
+MARGARETA RENI TRINUGRAHENI,0075807915,Kuliner,LULUS,https://drive.google.com/file/d/1jz2mBabWJJXynUPRwuvn5YyeLLiPKf0O/view?usp=drive_link
+MARIA MARSYA PUTIA WIDYANINGRUM,0085145850,Kuliner,LULUS,https://drive.google.com/file/d/1W6hMlnth50K-IKV7bXIPv9gUZfaB8_cp/view?usp=drive_link
+PINKAN GERALDINE,0086113339,Kuliner,LULUS,https://drive.google.com/file/d/1t9x9Z7-sGhK5JeAv88pRyPpHI3HRjPz9/view?usp=drive_link
+RILI PRAMESTI,0081671434,Kuliner,LULUS,https://drive.google.com/file/d/11PNgq9UMWK3HdHjuaAJrHub71s_o8Aa3/view?usp=drive_link
+TEADESIA ANSENJANI SANTOSO,0084094274,Kuliner,LULUS,https://drive.google.com/file/d/1pj06mzc_SCM-XuzcL8Pre_XrlOkSNZ9e/view?usp=drive_link
+TEGAR MUHAMAD BRIMOB,0088339661,Kuliner,LULUS,https://drive.google.com/file/d/1eHowZEakFA8VOBAw568xha-4ms1Jlhls/view?usp=drive_link
+TIMOTHY PUTRA ATMORJO,0089202960,Kuliner,LULUS,https://drive.google.com/file/d/1R9f9Yqg7Gz5kVbvUw_fIx_CPrUVSq8iH/view?usp=drive_link
+TIMOTY PUJI KRISTIAN,0079176857,Kuliner,LULUS,https://drive.google.com/file/d/1Z4rsgs55VNjpcTzbaM_qF4bWiTbR1Ivf/view?usp=drive_link
+WINDY ANATASYA,0086909507,Kuliner,LULUS,https://drive.google.com/file/d/1MLj2nv8FyaFar3YDAUmPGaeH-i63zFB9/view?usp=drive_link
+AURORA ARNETTA,0077403128,Kuliner,LULUS,https://drive.google.com/file/d/1eQ0_sIDCvJVZI_T_wRZzNzc9gLd8L0O4/view?usp=drivesdk
+BETHANIA PUTRI PANGESTI,0076356296,Kuliner,LULUS,https://drive.google.com/file/d/1Sc3Mw9idZgFLX5VXJ-dG7bWFIU-RUMVo/view?usp=drivesdk
+BONAVENTURA OSCAR PUTRADIKA,0088130190,Kuliner,LULUS,https://drive.google.com/file/d/1D2jTva6_7OcYUco5LYnqtcEog60hzoJc/view?usp=drivesdk
+BONIFATIUS YEURO WIDI CAHYANTO,0087740785,Kuliner,LULUS,https://drive.google.com/file/d/1ygiCfF5WU9WEkIP73hZyu9h_-wCw28AD/view?usp=drivesdk
+CEYSHA PUTRI ANDINI,0084837500,Kuliner,LULUS,https://drive.google.com/file/d/1alZOuzq6LjLgGHD4vN1QTos-vHrEYN8x/view?usp=drivesdk
+CHRISTIANO VICKY ARUSTYA PRATAMA,0081938978,Kuliner,LULUS,https://drive.google.com/file/d/11EcN9AjvgU3jZbPk0ZjyZTVpdUaCbflz/view?usp=drivesdk
+CLARA ESTIANTI KABEAKAN,0081655363,Kuliner,LULUS,https://drive.google.com/file/d/1rLZMZlw7Kke2Umip8N0SSad8XFxCzdTY/view?usp=drivesdk
+DIMAS WIDIAN PRAYOGA,0078824182,Kuliner,LULUS,https://drive.google.com/file/d/1wHpv19mBUUvbbC8tjUhZSgS1yvOl6-Ef/view?usp=drivesdk
+GABRIELLA AGATHA BR HUTASOIT,0087165168,Kuliner,LULUS,https://drive.google.com/file/d/1cRXP3tLcSLIUFSulJtYdNlvzA04eRc8_/view?usp=drivesdk
+GALUH CHANDRA KIRANA,0088460943,Kuliner,LULUS,https://drive.google.com/file/d/1cFD6VZf7muFXxZrXK7MQQORzityG2iSb/view?usp=drivesdk
+HARUN,0066477680,Kuliner,LULUS,https://drive.google.com/file/d/1h-mDQUDVcM1TXu387ZaneE8mVQbJWdSU/view?usp=drivesdk
+INGRID FIORENTINA,0088285540,Kuliner,LULUS,https://drive.google.com/file/d/1LoFhLd4qJXW7Dah-5eHXiruV0JdHrkUT/view?usp=drivesdk
+JOANNE YEIRA CHRISA ELANI,0088409339,Kuliner,LULUS,https://drive.google.com/file/d/12jpzCQYxewSUN7NtiK3hlwQMy4G60mS3/view?usp=drivesdk
+JOSEPHINE DOROTHEA EVANGELINE,0081361634,Kuliner,LULUS,https://drive.google.com/file/d/1GIr7521Qpm7abdbraly25gEMur1Ur67l/view?usp=drivesdk
+MAISYA SAKINA,0058973675,Kuliner,LULUS,https://drive.google.com/file/d/15aEvdU9IjNC2aKnZDXD_5g_3wT-UiU1v/view?usp=drivesdk
+MONITA ALEXANDRA,0053798219,Kuliner,LULUS,https://drive.google.com/file/d/1leKEIcOzdoJJvGZPXqkT5AamTfkD2NwF/view?usp=drivesdk
+NATHANAEL BRAVISYA ARYAGUNA,0089313481,Kuliner,LULUS,https://drive.google.com/file/d/1lO6S_bX9H68HWJxQ0hy99ZFhP9cQwOII/view?usp=drivesdk
+NESYA FLORETTA ELINDA,0062137969,Kuliner,LULUS,https://drive.google.com/file/d/16L2wOAtIbyz7uLc7lR2Oa0uvgtnVUXEx/view?usp=drivesdk
+NI MADE SRI ASTUTI,0052408287,Kuliner,LULUS,https://drive.google.com/file/d/1MNUvLQQpI66NUMCD9SV2Cxhr_M1g2tAG/view?usp=drivesdk
+RAHEL LEORANITA,0089069381,Kuliner,LULUS,https://drive.google.com/file/d/1xy_R7lChhMRIiWemMtbVzZZL6L7YySky/view?usp=drivesdk
+REBECCA ALEXANDRA MOLINA,0085638384,Kuliner,LULUS,https://drive.google.com/file/d/11cBmlxB8Hn9I6nNpjUuzmaPDhYtwsX7-/view?usp=drivesdk
+REGINA CHATRINE AYUDIANA,0071370410,Kuliner,LULUS,https://drive.google.com/file/d/1Pyo2PdwsaAYfviGCgknKvPQY0fkr5m5-/view?usp=drivesdk
+SARA CAMILLA ALEXANDRA SAPTA PUTRI,0077204819,Kuliner,LULUS,https://drive.google.com/file/d/1VSPtMavonsLopEF0o7N8BROZ0OBGXlaN/view?usp=drivesdk
+SHALLVYNE VEXIA DAFFIDOVE,0085216525,Kuliner,LULUS,https://drive.google.com/file/d/1Il3G9pMv0oES3abPbPWxNf4X-hRiEX00/view?usp=drivesdk
+VINCENTIUS ARIEL JEVON SATHRIA,0075229730,Kuliner,LULUS,https://drive.google.com/file/d/1WLxigt_JHd6S-_XIfPhMEBWJiw5PDDEo/view?usp=drivesdk
+VINCENTIUS FEBRI KURNIAWAN,0082316624,Kuliner,LULUS,https://drive.google.com/file/d/16phe_JPnuLGRMLoGttkKnbQ0br-81PqX/view?usp=drivesdk
+YOHANI ARANDA PRIMAYANTI,0074022602,Kuliner,LULUS,https://drive.google.com/file/d/1NGoYOKaOdTRsc506avrGXGxV-p34ngf9/view?usp=drivesdk
+AGNES AVI APRILIA,0082857899,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1ClhVCrJ7bfPNcYQCj6YMFR8DOXeTqlBx/view?usp=drivesdk
+ARCHANGELA GIRLANI SEKAR SABAT,0087351532,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1_UHXLydDKZaEeTOuT8dwO3ntOMy4xJ_W/view?usp=drivesdk
+ARLYN ARDELIA FIRMANI,0049884471,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1MZRw9frniEpStgVzTWaRGY8_rq-BCv7t/view?usp=drivesdk
+CHARISTYLA LOLA SILLA BANDASO,0081613654,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1fxmFpa3z1S_9IyjrnGApzba2q6NodrDO/view?usp=drivesdk
+CICILIA SEFINA DIAN LARASATI,0071982346,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1cbUryTClp7aAKw_jWIhyM4y8ccktoOIh/view?usp=drivesdk
+ELYYANA FEBRIYANTI,0068573309,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1SSTir-wVFNb-Y9KAtybD4XhL-iE5105A/view?usp=drivesdk
+HILDEGARD KRISTIORLIN SANTOSO,0084339823,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1Hq7UCdffMWS841kooYS3b8cSsMyAYsa_/view?usp=drivesdk
+NESYA TALENTA PASHA,0077177719,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1VqS4hAjzfkiube_MnDSt0sOZhExqIV75/view?usp=drivesdk
+RAFAEL MONICA DAMAI NUGRAHENI,0089714430,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1NJ7OrzyAo-AbeXTJqUZM9I_90J5iGBAk/view?usp=drivesdk
+YOLAONA WIDYA ZEFANYA,0088864775,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1EsTFSvI5QUEffdRhMJuidkW0pqh_uiF-/view?usp=drivesdk
+YOSEFINE FRANSISKA ROSALINA,0085179239,Desain dan Produksi Busana,LULUS,https://drive.google.com/file/d/1mZEvg4ixarCeVGH9xeLdzzUVJdJWn4zS/view?usp=drivesdk`;
+
+      // Parsing CSV menjadi Array of Objects
+      function parseCSV(csv) {
+        const lines = csv.trim().split("\n");
+        const result = [];
+        const headers = lines[0].split(",").map((h) => h.trim());
+
+        for (let i = 1; i < lines.length; i++) {
+          // Tangani pembatas koma
+          const obj = {};
+          const currentline = lines[i].split(",");
+
+          for (let j = 0; j < headers.length; j++) {
+            obj[headers[j]] = currentline[j] ? currentline[j].trim() : "";
+          }
+          result.push(obj);
+        }
+        return result;
+      }
+
+      const studentsData = parseCSV(dataCSV);
+
+      /* =========================================
+           2. SISTEM ROUTING SPA (Single Page Application)
+           ========================================= */
+      function showPage(pageId) {
+        // Sembunyikan semua halaman
+        const pages = document.querySelectorAll(".page-section");
+        pages.forEach((page) => {
+          page.classList.remove("active");
+        });
+
+        // Tampilkan halaman tujuan
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+          targetPage.classList.add("active");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      /* =========================================
+           3. SISTEM COUNTDOWN TIMER
+           ========================================= */
+      // Waktu target: May 4, 2026 18:00:00
+      const countDownDate = new Date("May 3, 2026 18:00:00").getTime();
+
+      const x = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Tampilkan di UI dengan format 2 digit
+        document.getElementById("cd-days").innerText = days
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("cd-hours").innerText = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("cd-mins").innerText = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("cd-secs").innerText = seconds
+          .toString()
+          .padStart(2, "0");
+
+        // Jika hitungan mundur selesai
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("timer-section").style.display = "none";
+
+          const btnEnter = document.getElementById("btn-enter");
+          btnEnter.removeAttribute("disabled");
+          btnEnter.innerText = "MASUK KE HALAMAN PENGUMUMAN";
+          btnEnter.onclick = () => showPage("page-sambutan");
+        }
+      }, 1000);
+
+      /* =========================================
+           4. LOGIKA PENGECEKAN KELULUSAN & LINK GOOGLE DRIVE
+           ========================================= */
+      const nisnInput = document.getElementById("nisn-input");
+      const btnCek = document.getElementById("btn-cek");
+      const resultModal = document.getElementById("result-modal");
+      const resultContainer = document.getElementById("result-container");
+
+      // Fitur tekan "Enter" untuk submit
+      nisnInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          btnCek.click();
+        }
+      });
+
+      btnCek.addEventListener("click", function () {
+        const inputVal = nisnInput.value.trim();
+
+        if (inputVal === "") {
+          alert("Harap masukkan NISN Anda terlebih dahulu!");
+          return;
+        }
+
+        // Cari data di Array CSV
+        const student = studentsData.find((s) => s.NISN === inputVal);
+
+        // Reset class result container
+        resultContainer.className = "result-box";
+
+        if (student) {
+          if (student.Status.toUpperCase() === "LULUS") {
+            resultContainer.classList.add("lulus");
+
+            // Cek jika link Google Drive tersedia atau tidak (mencegah error jika kosong)
+            const linkButtonHtml = student.LinkSKL
+              ? `<a href="${student.LinkSKL}" target="_blank" class="btn btn-primary" style="display: flex; align-items: center; justify-content: center;">Buka / Unduh Surat</a>`
+              : `<button class="btn btn-primary" disabled>Link SKL Belum Tersedia</button>`;
+
+            resultContainer.innerHTML = `
+                        <p style="font-size: 1.1rem;">Berdasarkan hasil rapat verifikasi kelulusan, siswa/i atas nama:</p>
+                        <h3 class="result-name">${student.Nama}</h3>
+                        <p>NISN: <strong>${student.NISN}</strong> | Jurusan: <strong>${student.Jurusan}</strong></p>
+                        <p>Dinyatakan:</p>
+                        <div class="result-status">Silahkan Cek Pemberitahuan</div>
+                        <p style="margin-top: 1rem;">Silakan akses surat pemberitahuan resmi Anda pada tautan di bawah ini.</p>
+                        <div class="btn-group" style="justify-content: center; margin-top: 2rem;">
+                            <button class="btn btn-outline" style="background: white;" onclick="resetForm()">Tutup</button>
+                            ${linkButtonHtml}
+                        </div>
+                    `;
+          } else {
+            resultContainer.classList.add("tidak-lulus");
+            resultContainer.innerHTML = `
+                        <p style="font-size: 1.1rem;">Berdasarkan hasil rapat pleno kelulusan, siswa/i atas nama:</p>
+                        <h3 class="result-name">${student.Nama}</h3>
+                        <p>NISN: <strong>${student.NISN}</strong> | Jurusan: <strong>${student.Jurusan}</strong></p>
+                        <p>Dinyatakan:</p>
+                        <div class="result-status">TIDAK LULUS</div>
+                        <p style="margin-top: 1rem;">Tetap semangat dan jangan putus asa. Kegagalan hari ini adalah pelajaran untuk masa depan.</p>
+                        <div class="btn-group" style="justify-content: center; margin-top: 2rem;">
+                            <button class="btn btn-outline" style="background: white;" onclick="resetForm()">Tutup</button>
+                        </div>
+                    `;
+          }
+        } else {
+          resultContainer.classList.add("error");
+          resultContainer.innerHTML = `
+                    <h3 style="color: #856404; margin-bottom: 10px;">⚠️ Data Tidak Ditemukan!</h3>
+                    <p>NISN <strong>${inputVal}</strong> tidak terdaftar dalam sistem kami. Pastikan Anda memasukkan NISN dengan benar tanpa spasi atau karakter khusus.</p>
+                    <div class="btn-group" style="justify-content: center; margin-top: 2rem;">
+                        <button class="btn btn-outline" style="background: white;" onclick="resetForm()">Tutup</button>
+                    </div>
+                `;
+        }
+
+        // Tampilkan Modal Popup
+        resultModal.classList.add("active");
+      });
+
+      // Fungsi Reset Form untuk Cek Siswa Lain
+      function resetForm() {
+        resultModal.classList.remove("active");
+        nisnInput.value = "";
+        nisnInput.focus();
+      }
+
+      /* =========================================
+           5. AUTO UPDATE TAHUN COPYRIGHT (FOOTER)
+           ========================================= */
+      document.getElementById("currentYear").innerText =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
